@@ -1,0 +1,10 @@
+rm ./truth/truth*.dat
+rm ./obs/truth*.dat
+rm ./obs/obs*.dat
+rm ./fsc/*.dat
+rm ./bgd/*.dat
+rm ./ana/*.dat
+rm ./letkf/letkf*.dat
+rm ./letkf/ana*.dat
+rm ./letkf/obs*.dat
+rm ./letkf/bgd*.dat

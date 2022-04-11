@@ -1,0 +1,61 @@
+NOTE:
+This is the LETKF data assimilation system for the Lorenz 40-var system.
+The system is designed solely for pedagogical purposes, and so no support
+is provided. Users will take full responsibility for their use, so long
+as it is not for the commercial purposes.
+
+REMARK:
+1. The system only supports PGI/Intel Fortran compiler at the moment. For
+   MPI run, only PGI is supported.
+2. Only a certain type of OSSE designs are supported (see obs/obs.f90)
+3. Intel fortram compiler has a much longer runtime as compared to PGI!!!
+4. The cost function minimizer employs an external lib for the conjugate
+   gradient method.
+5. The code is hardwired with a less than 1000 ensemble members. Users need to 
+   learn how to adjust these parameters as a part of learning the code 
+   instead of running it like a black box.
+
+AUTH: Chanh Kieu, emai: ckieu@iu.edu. Tel: 812-856-5704 (C)
+
+INSTALLATION:
+1. Edit the installation file: compile.sh and select the Fortran compiler
+        as well as the main directory that contains this system.
+2. Type: sh ./compile.sh. A successful compilation should produce 7 exe
+        files. Any missing executable files would give an error message.
+
+HOW TO RUN:
+1. cd run and edit namelist.L40 for the options with DA and L40 model 
+2. edit run_letkf.sh to choose the options for DA cycling settings
+3. Run: sh ./run_letkf.sh
+3. Go to "dig" and check some diagnostic analysis (see, e.g., dig.txt or
+        dig.ctl for graphical output)
+
+DIR STRUCTURE
+1. ini: dir that contains a cold start initialization for an ensemble of
+        initital inputs
+
+2. truth: dir that contains an truth created from a base run of the base model.
+        This program will use an initial input and integrate the model with 
+        time, output at some regular interval as the truth benchmark.
+
+3. obs: dir contains the obs data that are created by running obs.exe. This 
+        program will read the truth and add some perturbed white noise to
+        the truth to mimic the real obs.
+
+4. model: contains the Lorenz 40-var model
+
+5. letkf: contains the assimilation code that performs a data assimilation
+        process.
+
+6. ana: contains the analysis output
+
+7. fsc: contains the forecast for each cycle.
+
+8. ctl: contains the base run with no assimilation. This is needed to compare
+        the roles of assimilation.
+
+9. dig: contains some diagnostic calculations
+
+10.bgd: contains the background backup after each assimilating cycle. 
+
+11.utils: contains some ultility programs that do intermediate steps
