@@ -35,7 +35,7 @@ if [ "$restart" = "Y" ]; then
     #
     cd ${homedir}/truth
     ln -sf ${homedir}/run/namelist.L40 ./
-    time ./truth.exe
+    ./truth.exe
     #
     # now create observational data from the given truth obtained
     # above
@@ -44,7 +44,13 @@ if [ "$restart" = "Y" ]; then
     ln -sf ${homedir}/run/namelist.L40 ./
     ln -sf ${homedir}/truth/truth*.dat ./
     rm truth.dat
-    time ./obs.exe
+    ./obs.exe
+    if [ -s "obs0001.dat" ]; then
+        echo " OSSE obs is properly produced"
+    else
+        echo " OSSE obs is not supported. Check no in namelist.L40"
+        exit 1
+    fi
 fi 
 #
 # copy some initial startup for the cold start mode of KF
@@ -223,6 +229,7 @@ echo " Doing analysis now ..."
 cd ${homedir}/dig
 ln -sf ${homedir}/truth/truth*.dat ./
 ln -sf ${homedir}/obs/obs*.dat ./
+ln -sf ${homedir}/run/namelist.L40 ./
 time ./dig.exe
 #
 # cleaning history now

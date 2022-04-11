@@ -66,6 +66,7 @@
   integer                          :: i,j,i1,j1,k1,ie     ! indexing
   integer                          :: debug               ! debuging
   integer                          :: irec                ! output record
+  integer                          :: ofactor             ! factor for printing obs
   real                             :: bvar                ! background variance
   real                             :: ovar                ! observation variance
   real                             :: rscale              ! scale of background variance matrix
@@ -124,20 +125,17 @@
 !
 ! quick check of obs data
 !
-  if (no.eq.40) then
-   write(92,rec=irec)(Yo_g(i),i=1,nx)
-   irec          = irec + 1
-  elseif (no.eq.20) then
-   do i          = 1,nx
-    if (mod(i,2).eq.0) then
-     tem2(i)     = Yo_g(i/2)
+  ofactor        = int(nx/no)
+  do i           = 1,nx
+    if (mod(i,ofactor).eq.0) then
+     print*,i,ofactor,int(i/ofactor)
+     tem2(i)     = Yo_g(int(i/ofactor))
     else
      tem2(i)     = -99999
     endif
-   enddo
-   write(92,rec=irec)(tem2(i),i=1,nx)
-   irec          = irec + 1
-  endif
+  enddo
+  write(92,rec=irec)(tem2(i),i=1,nx)
+  irec          = irec + 1
 !
 ! reading forecast files
 !

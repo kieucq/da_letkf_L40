@@ -1,10 +1,16 @@
-rm ./truth/truth*.dat
-rm ./obs/truth*.dat
-rm ./obs/obs*.dat
-rm ./fsc/*.dat
-rm ./bgd/*.dat
-rm ./ana/*.dat
-rm ./letkf/letkf*.dat
-rm ./letkf/ana*.dat
-rm ./letkf/obs*.dat
-rm ./letkf/bgd*.dat
+rm -f ./truth/truth*.dat
+rm -f ./obs/truth*.dat
+rm -f ./obs/obs*.dat
+rm -f ./fsc/*.dat
+rm -f ./bgd/*.dat
+rm -f ./ana/*.dat
+rm -f ./ini/bgd_*.dat
+rm -f ./letkf/letkf*.dat
+rm -f ./letkf/ana*.dat
+rm -f ./letkf/obs*.dat
+rm -f ./letkf/bgd*.dat
+rm -f ./dig/ana0*.dat
+rm -f ./dig/bgd0*.dat
+rm -f ./dig/ctl0*.dat
+rm -f ./dig/obs0*.dat
+rm -f ./dig/truth*.dat

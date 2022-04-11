@@ -14,6 +14,10 @@ REMARK:
 5. The code is hardwired with a less than 1000 ensemble members. Users need to 
    learn how to adjust these parameters as a part of learning the code 
    instead of running it like a black box.
+6. The obs design is hardwired to be on the model grid such that H is 
+   simplified.
+7. OSSE obs network supports only 2/4/5/8/10/40 number of observations.
+8. 
 
 AUTH: Chanh Kieu, emai: ckieu@iu.edu. Tel: 812-856-5704 (C)
 

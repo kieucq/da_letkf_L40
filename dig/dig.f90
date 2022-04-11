@@ -79,8 +79,9 @@
     READ(74,*)tem,xo(i,itime)
    ENDDO
   ELSE
-   PRINT*,'dig.exe: no is not supported..stop'
-   STOP
+   DO i     = 1,no
+    xo(i,itime) = -99999
+   ENDDO
   ENDIF
   READ(75,*)(xa(i,itime),i=1,n)
   READ(76,*)(xc(i,itime),i=1,n)
@@ -110,7 +111,7 @@
   DO i         = 1,no
    rmsa(itime) = rmsa(itime) + (xa(i,itime)-xt(i,itime))**2
    rmsb(itime) = rmsb(itime) + (xb(i,itime)-xt(i,itime))**2
-   rmso(itime) = rmso(itime) + (xo(i,itime)-xt(i,itime))**2
+   IF (no.eq.40) rmso(itime) = rmso(itime) + (xo(i,itime)-xt(i,itime))**2
    rmsc(itime) = rmsc(itime) + (xc(i,itime)-xt(i,itime))**2
   ENDDO
   rmsa(itime)  = sqrt(rmsa(itime)/no)

@@ -77,8 +77,16 @@
     WRITE(72,*)i,xp(i)
    ELSEIF (no.eq.20) THEN
     IF (mod(i,2).eq.0) WRITE(72,'(1I5,E12.4)')i,xp(i) 
+   ELSEIF (no.eq.10) THEN
+    IF (mod(i,4).eq.0) WRITE(72,'(1I5,E12.4)')i,xp(i)
+   ELSEIF (no.eq.8) THEN
+    IF (mod(i,5).eq.0) WRITE(72,'(1I5,E12.4)')i,xp(i)
+   ELSEIF (no.eq.4) THEN
+    IF (mod(i,10).eq.0) WRITE(72,'(1I5,E12.4)')i,xp(i)
+   ELSEIF (no.eq.2) THEN
+    IF (mod(i,20).eq.0) WRITE(72,'(1I5,E12.4)')i,xp(i)
    ELSE
-    PRINT*,'Un-supported no...stop'
+    PRINT*,'Un-supported the number of obs no...stop'
     STOP
    ENDIF 
   ENDDO
